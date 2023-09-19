@@ -37,9 +37,10 @@
             <Label Content="UnitPrice"></Label>
             <TextBox Text="{Binding SelectedProduct.UnitPrice}" x:Name="price" Height="29"></TextBox>
             <DockPanel>
-                <Button Command="{Binding addProductCommand}" Width="86">Add</Button>
-                <Button Command="{Binding updateProductCommand}" Width="90">Update</Button>
-                <Button Command="{Binding deleteProductCommand}" Width="90">Remove</Button>
+                <Button Command="{Binding addProductCommand}" Width="70">Add</Button>
+                <Button Command="{Binding updateProductCommand}" Width="70">Update</Button>
+                <Button Command="{Binding deleteProductCommand}" Width="70">Remove</Button>
+                <Button Command="{Binding saveProductCommand}" Width="61">save</Button>
             </DockPanel>
         </StackPanel>
         <ListView Grid.Column="1" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">

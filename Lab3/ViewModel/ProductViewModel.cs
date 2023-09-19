@@ -1,8 +1,7 @@
 ﻿using Lab3.DataContext;
+using Lab3.DataContextObservableCollection;
 using Lab3.Models;
-using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Lab3.ViewModel
@@ -14,12 +13,15 @@ namespace Lab3.ViewModel
         private CategoryManager _categoryManager;
 
 
+
         //Command
         public ICommand addProductCommand { get; set; }
 
         public ICommand deleteProductCommand { get; set; }
 
         public ICommand updateProductCommand { get; set; }
+
+        public ICommand saveProductCommand { get; set; }
 
         //ObservableCollection
         private ObservableCollection<Product> _products;
@@ -67,6 +69,7 @@ namespace Lab3.ViewModel
             addProductCommand = new ReplayCommand(canAddProduct, addProduct);
             updateProductCommand = new ReplayCommand(canUpdateProduct, updateProduct);
             deleteProductCommand = new ReplayCommand(canDeleteProduct, deleteProduct);
+            saveProductCommand = new ReplayCommand(canSaveProduct, saveProduct);
         }
 
         private void addProduct(object obj)
@@ -75,26 +78,17 @@ namespace Lab3.ViewModel
         }
         private void deleteProduct(object obj)
         {
-            if (selectedProduct != null)
-            {
-                _productManager.RemoveProduct(SelectedProduct);
-            }
-            else
-            {
-                MessageBox.Show("Select item value in ListView");
-            }
+            _productManager.RemoveProduct(SelectedProduct);
         }
 
         private void updateProduct(object obj)
         {
-            if (selectedProduct != null)
-            {
-                _productManager.UpdateProduct(selectedProduct);
-            }
-            else
-            {
-                MessageBox.Show("Selected item value in ListView");
-            }
+            _productManager.UpdateProduct(selectedProduct);
+        }
+
+        private void saveProduct(object obj)
+        {
+            _productManager.SaveProduct();
         }
 
         private bool canUpdateProduct(object obj)
@@ -110,6 +104,9 @@ namespace Lab3.ViewModel
         {
             return true;
         }
-
+        private bool canSaveProduct(object obj)
+        {
+            return true;
+        }
     }
 }
