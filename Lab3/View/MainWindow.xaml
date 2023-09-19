@@ -1,0 +1,59 @@
+﻿<Window x:Class="Lab3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab3"
+        xmlns:local1="clr-namespace:Lab3.Converter"
+        xmlns:local2="clr-namespace:Lab3.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="462" Width="813">
+    <Window.Resources>
+        <local1:DiscontinueConverter x:Key="discontinuedConverter"/>
+    </Window.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel >
+            <Label Content="ProductId"></Label>
+            <TextBox Text="{Binding SelectedProduct.ProductId}" x:Name="productId" IsReadOnly="True" Height="29"></TextBox>
+            <Label Content="ProductName"></Label>
+            <TextBox Text="{Binding SelectedProduct.ProductName}" x:Name="productName" Height="27"/>
+            <Label Content="Category Name"></Label>
+            <ComboBox x:Name="categoryProduct"
+                      ItemsSource="{Binding Category}"
+                      SelectedItem="{Binding SelectedProduct.Category}"
+                      SelectedValue="{Binding SelectedProduct.CategoryId}"
+                      SelectedValuePath="CategoryId"
+                      DisplayMemberPath="CategoryName"/>
+            <Label Content="QuantityPerUnit"></Label>
+            <TextBox Text="{Binding SelectedProduct.QuantityPerUnit}" x:Name="quantity" Height="29"></TextBox>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Discontinued"></Label>
+                <RadioButton GroupName="Discontinued" IsChecked="{Binding SelectedProduct.Discontinued}" x:Name="enable" VerticalAlignment="Bottom"  Margin="24px 0px 0px 0px" Content="Enable" Height="20" Width="74"></RadioButton>
+                <RadioButton GroupName="Discontinued" IsChecked="{Binding SelectedProduct.Discontinued, Converter={StaticResource ResourceKey=discontinuedConverter}}" x:Name="disable" VerticalAlignment="Bottom" Content="Disable" Height="20" Width="77" RenderTransformOrigin="0.874,0.775"/>
+            </StackPanel>
+            <Label Content="UnitPrice"></Label>
+            <TextBox Text="{Binding SelectedProduct.UnitPrice}" x:Name="price" Height="29"></TextBox>
+            <DockPanel>
+                <Button Command="{Binding addProductCommand}" Width="86">Add</Button>
+                <Button Command="{Binding updateProductCommand}" Width="90">Update</Button>
+                <Button Command="{Binding deleteProductCommand}" Width="90">Remove</Button>
+            </DockPanel>
+        </StackPanel>
+        <ListView Grid.Column="1" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding ProductId}" Header="ProductID"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding ProductName}" Header="ProductName" Width="100"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Category.CategoryName}" Header="CategoryName" Width="95"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding QuantityPerUnit}" Header="QuantityPerUnit" Width="100"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding UnitPrice}" Header="UnitPrice" Width="100"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Discontinued}" Header="Discontinued"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

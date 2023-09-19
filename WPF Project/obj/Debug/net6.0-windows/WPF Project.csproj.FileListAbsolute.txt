@@ -1,0 +1,24 @@
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\bin\Debug\net6.0-windows\WPF Project.exe
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\bin\Debug\net6.0-windows\WPF Project.deps.json
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\bin\Debug\net6.0-windows\WPF Project.runtimeconfig.json
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\bin\Debug\net6.0-windows\WPF Project.dll
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\bin\Debug\net6.0-windows\WPF Project.pdb
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.csproj.AssemblyReference.cache
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\App.g.cs
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project_MarkupCompile.cache
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project_MarkupCompile.lref
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\MainWindow.baml
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.g.resources
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.GeneratedMSBuildEditorConfig.editorconfig
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.AssemblyInfoInputs.cache
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.AssemblyInfo.cs
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.csproj.CoreCompileInputs.cache
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.dll
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\refint\WPF Project.dll
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.pdb
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\WPF Project.genruntimeconfig.cache
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\ref\WPF Project.dll
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\DemoListBox.g.cs
+D:\StudyMaterials\Code_C#\DemoSE1628\WPF Project\obj\Debug\net6.0-windows\DemoListBox.baml

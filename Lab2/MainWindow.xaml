@@ -1,0 +1,52 @@
+﻿<Window x:Class="Lab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Label Content="ProductId"></Label>
+            <TextBox x:Name="Id" IsReadOnly="True" Height="29"></TextBox>
+            <Label Content="ProductName"></Label>
+            <TextBox x:Name="Name" Height="27"/>
+            <Label Content="Category Name"></Label>
+            <ComboBox x:Name="Category"></ComboBox>
+            <Label Content="QuantityPerUnit"></Label>
+            <TextBox x:Name="Quantity" Height="29"></TextBox>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Discontinued"></Label>
+                <RadioButton x:Name="Discontinued" VerticalAlignment="Bottom"  Margin="24px 0px 0px 0px" Content="Enable" Height="20" Width="74"></RadioButton>
+                <RadioButton x:Name="Discontinued1" VerticalAlignment="Bottom" Content="Disable" Height="20" Width="99" RenderTransformOrigin="0.874,0.775"/>
+            </StackPanel>
+            <Label Content="UnitPrice"></Label>
+            <TextBox x:Name="Price" Height="29"></TextBox>
+            <DockPanel>
+                <Button Height="26" Width="89" Click="Button_Click">Add</Button>
+                <Button Width="89" Height="26" Click="Button_Click_1">Edit</Button>
+                <Button Height="26" Width="89" Click="Button_Click_2">Delete</Button>
+            </DockPanel>
+            <Button Height="32" Width="90" Click="Button_Click_3">Save</Button>
+        </StackPanel>
+        <ListBox x:Name="LbProducts" Grid.Row="0" Grid.Column="1" SelectionChanged="LbProducts_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Path=ProductId, Mode=OneWay}"></Label>
+                        <Label Content="{Binding Path=ProductName, Mode=OneWay}"></Label>
+                        <Label Content="{Binding Path=QuantityPerUnit, Mode=OneWay}"></Label>
+                        <Label Content="{Binding Path=Discontinued, Mode=OneWay}"></Label>
+                        <Label Content="{Binding Path=UnitPrice, Mode=OneWay}"></Label>
+                        <Label Content="{Binding Path=Category.CategoryName, Mode=OneWay}"></Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
