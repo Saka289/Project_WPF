@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab3"
         xmlns:local1="clr-namespace:Lab3.Converter"
-        xmlns:local2="clr-namespace:Lab3.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="462" Width="813">
     <Window.Resources>

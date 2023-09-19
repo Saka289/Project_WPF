@@ -1,11 +1,8 @@
 ﻿using Lab3.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace Lab3.DataContext
 {
@@ -33,18 +30,40 @@ namespace Lab3.DataContext
 
         public void AddProduct(Product newProduct)
         {
-            newProduct.ProductId = 0;
-            newProduct.Category = null;
-            _context.Products.Add(newProduct);
-            _context.SaveChanges();
-            dataProducts.Add(newProduct);
+            var item = _context.Products.FirstOrDefault(p => p.ProductId == newProduct.ProductId);
+            if (item != null)
+            {
+                MessageBox.Show("ProductID is exists !!!");
+            }
+            else
+            {
+                if (ValidateValue(newProduct) == true)
+                {
+                    newProduct.ProductId = 0;
+                    newProduct.Category = null;
+                    _context.Products.AsNoTracking();
+                    _context.Products.Add(newProduct);
+                    dataProducts.Add(newProduct);
+                    _context.SaveChanges();
+                }
+            }
         }
 
         public void UpdateProduct(Product responseProduct)
         {
-            _context.Products.AsNoTracking();
-            _context.Products.Update(responseProduct);
-            _context.SaveChanges();
+
+            var item = _context.Products.FirstOrDefault(p => p.ProductId == responseProduct.ProductId);
+            if (item != null)
+            {
+                responseProduct.Category = null;
+                _context.Products.AsNoTracking();
+                _context.Products.Update(responseProduct);
+                _context.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("ProductID does not exist !!!");
+            }
         }
 
         public void RemoveProduct(Product responseProduct)
@@ -59,6 +78,32 @@ namespace Lab3.DataContext
                 _context.SaveChanges();
             }
 
+        }
+
+        private bool ValidateValue(Product responseProduct)
+        {
+            bool Ischeck = true;
+            if (responseProduct.ProductName == null)
+            {
+                MessageBox.Show("ProductName is null");
+                Ischeck = false;
+            }
+            else if (responseProduct.Category == null)
+            {
+                MessageBox.Show("Category is null");
+                Ischeck = false;
+            }
+            else if (responseProduct.QuantityPerUnit == null)
+            {
+                MessageBox.Show("QuantityPerUnit is null");
+                Ischeck = false;
+            }
+            else if (responseProduct.UnitPrice == null)
+            {
+                MessageBox.Show("UnitPrice is null");
+                Ischeck = false;
+            }
+            return Ischeck;
         }
     }
 }

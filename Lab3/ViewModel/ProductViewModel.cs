@@ -68,13 +68,14 @@ namespace Lab3.ViewModel
             updateProductCommand = new ReplayCommand(canUpdateProduct, updateProduct);
             deleteProductCommand = new ReplayCommand(canDeleteProduct, deleteProduct);
         }
+
         private void addProduct(object obj)
         {
             _productManager.AddProduct(selectedProduct);
         }
         private void deleteProduct(object obj)
         {
-            if (selectedProduct.ProductId != 0)
+            if (selectedProduct != null)
             {
                 _productManager.RemoveProduct(SelectedProduct);
             }
@@ -86,7 +87,14 @@ namespace Lab3.ViewModel
 
         private void updateProduct(object obj)
         {
-            _productManager.UpdateProduct(selectedProduct);
+            if (selectedProduct != null)
+            {
+                _productManager.UpdateProduct(selectedProduct);
+            }
+            else
+            {
+                MessageBox.Show("Selected item value in ListView");
+            }
         }
 
         private bool canUpdateProduct(object obj)
