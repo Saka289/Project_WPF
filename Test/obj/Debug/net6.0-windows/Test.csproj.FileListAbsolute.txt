@@ -1,5 +1,0 @@
-D:\StudyMaterials\Code_C#\DemoSE1628\Test\obj\Debug\net6.0-windows\Test.csproj.AssemblyReference.cache
-D:\StudyMaterials\Code_C#\DemoSE1628\Test\obj\Debug\net6.0-windows\MainWindow.g.cs
-D:\StudyMaterials\Code_C#\DemoSE1628\Test\obj\Debug\net6.0-windows\App.g.cs
-D:\StudyMaterials\Code_C#\DemoSE1628\Test\obj\Debug\net6.0-windows\Test_MarkupCompile.cache
-D:\StudyMaterials\Code_C#\DemoSE1628\Test\obj\Debug\net6.0-windows\Test_MarkupCompile.lref
