@@ -3,7 +3,6 @@ D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\bin\Debug\net6.0-windows\Lab1.deps.jso
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\bin\Debug\net6.0-windows\Lab1.runtimeconfig.json
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\bin\Debug\net6.0-windows\Lab1.dll
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\bin\Debug\net6.0-windows\Lab1.pdb
-D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\Lab1.csproj.AssemblyReference.cache
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\MainWindow.g.cs
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\App.g.cs
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\Lab1_MarkupCompile.cache
@@ -19,4 +18,3 @@ D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\refint\Lab1.d
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\Lab1.pdb
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\Lab1.genruntimeconfig.cache
 D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\ref\Lab1.dll
-D:\StudyMaterials\Code_C#\DemoSE1628\Lab1\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs

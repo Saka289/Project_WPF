@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lab3"
         xmlns:local1="clr-namespace:Lab3.Converter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="462" Width="813">
+        Title="MainWindow" Height="550" Width="990">
     <Window.Resources>
         <local1:DiscontinueConverter x:Key="discontinuedConverter"/>
     </Window.Resources>
@@ -27,6 +27,13 @@
                       SelectedValue="{Binding SelectedProduct.CategoryId}"
                       SelectedValuePath="CategoryId"
                       DisplayMemberPath="CategoryName"/>
+            <Label Content="Suppliers"></Label>
+            <ComboBox x:Name="suppliersProduct"
+                      ItemsSource="{Binding Suppliers}"
+                      SelectedItem="{Binding SelectedProduct.Supplier}"
+                      SelectedValue="{Binding SelectedProduct.SupplierId}"
+                      SelectedValuePath="SupplierId"
+                      DisplayMemberPath="CompanyName"/>
             <Label Content="QuantityPerUnit"></Label>
             <TextBox Text="{Binding SelectedProduct.QuantityPerUnit}" x:Name="quantity" Height="29"></TextBox>
             <StackPanel Orientation="Horizontal">
@@ -36,19 +43,27 @@
             </StackPanel>
             <Label Content="UnitPrice"></Label>
             <TextBox Text="{Binding SelectedProduct.UnitPrice}" x:Name="price" Height="29"></TextBox>
-            <DockPanel>
-                <Button Command="{Binding addProductCommand}" Width="70">Add</Button>
-                <Button Command="{Binding updateProductCommand}" Width="70">Update</Button>
-                <Button Command="{Binding deleteProductCommand}" Width="70">Remove</Button>
-                <Button Command="{Binding saveProductCommand}" Width="61">save</Button>
-            </DockPanel>
+            <Grid Margin ="0 12 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding addProductCommand}" Width="80">Add</Button>
+                <Button Command="{Binding updateProductCommand}" Width="80" Grid.Column="1">Update</Button>
+                <Button Command="{Binding deleteProductCommand}" Width="80" Grid.Column="2">Remove</Button>
+                <Button Command="{Binding clearProductCommand}" Width="80" Grid.Column="3">Clear</Button>
+            </Grid>
+            <Button Margin="0 40 0 0" Command="{Binding saveProductCommand}" Width="80" Content="Save"/>
         </StackPanel>
-        <ListView Grid.Column="1" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+        <ListView Grid.Column="1"  ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding ProductId}" Header="ProductID"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding ProductName}" Header="ProductName" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Category.CategoryName}" Header="CategoryName" Width="95"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Supplier.CompanyName}" Header="Suppliers" Width="95"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding QuantityPerUnit}" Header="QuantityPerUnit" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding UnitPrice}" Header="UnitPrice" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Discontinued}" Header="Discontinued"></GridViewColumn>

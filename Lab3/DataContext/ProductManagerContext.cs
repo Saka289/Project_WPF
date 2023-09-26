@@ -1,4 +1,5 @@
-﻿using Lab3.Models;
+﻿using Lab3.DataContextObservableCollection;
+using Lab3.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,18 @@ namespace Lab3.DataContext
             _context = new NorthwindContext();
         }
 
-        public List<Product> GetProducts()
+        public IQueryable<Product> GetProducts()
         {
-            return _context.Products.Include(c => c.Category).ToList();
+            return _context.Products
+                .Include(c => c.Category)
+                .Include(s => s.Supplier)
+                .AsNoTracking()
+                .AsQueryable();
+        }
+
+        public int CountProduct()
+        {
+            return _context.Products.Count();
         }
 
         public void AddNewProduct(Product responseProduct)
@@ -28,6 +38,7 @@ namespace Lab3.DataContext
             Product product = new Product();
             product.ProductName = responseProduct.ProductName;
             product.CategoryId = responseProduct.CategoryId;
+            product.SupplierId = responseProduct.SupplierId;
             product.QuantityPerUnit = responseProduct.QuantityPerUnit;
             product.UnitPrice = responseProduct.UnitPrice;
             product.Discontinued = responseProduct.Discontinued;
@@ -39,6 +50,7 @@ namespace Lab3.DataContext
             Product product = new Product();
             product.ProductName = responseProduct.ProductName;
             product.CategoryId = responseProduct.CategoryId;
+            product.SupplierId = responseProduct.SupplierId;
             product.QuantityPerUnit = responseProduct.QuantityPerUnit;
             product.UnitPrice = responseProduct.UnitPrice;
             product.Discontinued = responseProduct.Discontinued;
@@ -47,8 +59,16 @@ namespace Lab3.DataContext
 
         public void RemoveProduct(Product responseProduct)
         {
-            responseProduct.Category = null;
+            _context.Entry(responseProduct).State = EntityState.Detached;
             _context.Products.Remove(responseProduct);
+            responseProduct.Category = null;
+            responseProduct.Supplier = null;
+            var removeProduct = _context.Products.Find(responseProduct.ProductId);
+            if (removeProduct != null)
+            {
+                _context.Products.Remove(removeProduct);
+            }
+
         }
 
         public void SaveProduct()

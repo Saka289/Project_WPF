@@ -19,9 +19,9 @@ namespace Lab3.DataContext
             _context = new NorthwindContext();
         }
 
-        public List<Category> GetCategory()
+        public IQueryable<Category> GetCategory()
         {
-            return _context.Categories.ToList();
+            return _context.Categories.AsNoTracking().AsQueryable();
         }
     }
 }

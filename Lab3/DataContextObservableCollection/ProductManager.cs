@@ -9,14 +9,17 @@ namespace Lab3.DataContextObservableCollection
 {
     public class ProductManager
     {
-
         private readonly ProductManagerContext _contextProduct;
+
+        private readonly NorthwindContext _context;
+
         public ObservableCollection<Product> dataProducts { get; set; }
 
         public ProductManager()
         {
             _contextProduct = new ProductManagerContext();
             dataProducts = new ObservableCollection<Product>();
+            _context = new NorthwindContext();
             LoadProducts();
         }
 
@@ -45,6 +48,7 @@ namespace Lab3.DataContextObservableCollection
                     newProduct.ProductId = maxProductId + 1;
                     dataProducts.Add(newProduct);
                     _contextProduct.AddNewProduct(newProduct);
+                    MessageBox.Show("Add new product successful !!!");
                 }
             }
         }
@@ -58,9 +62,11 @@ namespace Lab3.DataContextObservableCollection
             {
                 itemToUpdate.ProductName = responseProduct.ProductName;
                 itemToUpdate.CategoryId = responseProduct.CategoryId;
+                itemToUpdate.SupplierId = responseProduct.SupplierId;
                 itemToUpdate.QuantityPerUnit = responseProduct.QuantityPerUnit;
                 itemToUpdate.UnitPrice = responseProduct.UnitPrice;
                 _contextProduct.UpdateProduct(responseProduct);
+                MessageBox.Show("Update product successful !!!");
             }
             else
             {
@@ -74,8 +80,10 @@ namespace Lab3.DataContextObservableCollection
 
             if (itemToRemove != null)
             {
+                _context.Entry(itemToRemove).State = EntityState.Detached;
                 dataProducts.Remove(itemToRemove);
                 _contextProduct.RemoveProduct(responseProduct);
+                MessageBox.Show("Remove product successful !!!");
             }
             else
             {
@@ -86,7 +94,21 @@ namespace Lab3.DataContextObservableCollection
 
         public void SaveProduct()
         {
-            _contextProduct.SaveProduct();
+            if (dataProducts.Count() > _contextProduct.CountProduct())
+            {
+                _contextProduct.SaveProduct();
+                MessageBox.Show("Save product successful !!!");
+            }
+            else if (dataProducts.Count() < _contextProduct.CountProduct())
+            {
+                _contextProduct.SaveProduct();
+                MessageBox.Show("Save product successful !!!");
+            }
+            else
+            {
+                MessageBox.Show("No Data In List !!!");
+            }
+
         }
 
         private bool ValidateValue(Product responseProduct)
@@ -100,6 +122,11 @@ namespace Lab3.DataContextObservableCollection
             else if (responseProduct.Category == null)
             {
                 MessageBox.Show("Category is null");
+                Ischeck = false;
+            }
+            else if (responseProduct.Supplier == null)
+            {
+                MessageBox.Show("Supplier is null");
                 Ischeck = false;
             }
             else if (responseProduct.QuantityPerUnit == null)
