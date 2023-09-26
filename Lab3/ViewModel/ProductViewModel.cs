@@ -99,18 +99,18 @@ namespace Lab3.ViewModel
 
         private void addProduct(object obj)
         {
-            _productManager.AddProduct(selectedProduct);
+            _productManager.AddProductObservableCollection(selectedProduct);
             clearProduct(obj);
         }
         private void deleteProduct(object obj)
         {
-            _productManager.RemoveProduct(SelectedProduct);
+            _productManager.RemoveProductObservableCollection(SelectedProduct);
             clearProduct(obj);
         }
 
         private void updateProduct(object obj)
         {
-            _productManager.UpdateProduct(selectedProduct);
+            _productManager.UpdateProductObservableCollection(selectedProduct);
         }
 
         private void saveProduct(object obj)
